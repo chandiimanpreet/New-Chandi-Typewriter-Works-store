@@ -12,7 +12,7 @@ interface Query {
 
 const getProducts = async (query: Query): Promise<Product[]> => {
     
-    const URL = `${process.env.NEXT_PUBLIC_API_URL}/products`;
+    const URL = `https://e-commerce--admin.vercel.app/api/480a7d7d-f596-483c-99cf-1ef0463d0659/products`;
     const url = qs.stringifyUrl({
         url: URL,
         query: {
