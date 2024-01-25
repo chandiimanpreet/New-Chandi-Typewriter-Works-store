@@ -12,7 +12,7 @@ interface Query {
 
 const getProducts = async (query: Query): Promise<Product[]> => {
     
-    const URL = `${process.env.NEXT_PUBLIC_API_URL}/products`;
+    const URL = `http://localhost:3000/api/dd5960db-046b-44c8-9875-8e3a5603dd6e/products`;
     const url = qs.stringifyUrl({
         url: URL,
         query: {
