@@ -3,7 +3,7 @@ import getProducts from "@/actions/get-products";
 import Billboard from "@/components/billboard";
 import ProductList from "@/components/product-list";
 import Container from "@/components/ui/container";
-import Head from "next/head";
+
 
 
 export const revalidate = 0;
@@ -15,23 +15,7 @@ const Homepage = async () => {
 
     return (
         <Container>
-            <Head>
-                <script
-                    async
-                    src={`https://www.googletagmanager.com/gtag/js?id=UA-300288021-1`} />
-                <script
-                    dangerouslySetInnerHTML={{
-                        __html: `
-                        window.dataLayer = window.dataLayer || [];
-                        function gtag(){dataLayer.push(arguments);}
-                        gtag('js', new Date());
-                        gtag('config', 'UA-300288021-1', {
-                            page_path: window.location.pathname,
-                        });
-                        `
-                    }}
-                />
-            </Head>
+            
             <div className="space-y-10 pb-10">
                 <Billboard data={billboard} />
 
