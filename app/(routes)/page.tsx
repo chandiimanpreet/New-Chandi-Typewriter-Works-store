@@ -5,6 +5,7 @@ import ProductList from "@/components/product-list";
 import Container from "@/components/ui/container";
 import Head from "next/head";
 
+
 export const revalidate = 0;
 
 const Homepage = async () => {
@@ -41,5 +42,6 @@ const Homepage = async () => {
         </Container>
     )
 }
+
 
 export default Homepage;
