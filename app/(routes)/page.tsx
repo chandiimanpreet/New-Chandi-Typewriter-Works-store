@@ -3,6 +3,7 @@ import getProducts from "@/actions/get-products";
 import Billboard from "@/components/billboard";
 import ProductList from "@/components/product-list";
 import Container from "@/components/ui/container";
+import { GoogleAnalytics } from '@next/third-parties/google'
 
 
 
@@ -15,7 +16,7 @@ const Homepage = async () => {
 
     return (
         <Container>
-            
+             <GoogleAnalytics gaId="G-62TK09FGMK" />
             <div className="space-y-10 pb-10">
                 <Billboard data={billboard} />
 

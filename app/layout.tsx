@@ -1,5 +1,5 @@
 import { Urbanist } from 'next/font/google';
-import Head from "next/head";
+import { GoogleAnalytics } from '@next/third-parties/google'
 
 import Footer from '@/components/footer';
 import Navbar from '@/components/navbar';
@@ -22,23 +22,6 @@ export default function RootLayout({
 }) {
     return (
         <html lang="en">
-            <Head>
-                <script
-                    async
-                    src={`https://www.googletagmanager.com/gtag/js?id=UA-300288021-1`} />
-                <script
-                    dangerouslySetInnerHTML={{
-                        __html: `
-                        window.dataLayer = window.dataLayer || [];
-                        function gtag(){dataLayer.push(arguments);}
-                        gtag('js', new Date());
-                        gtag('config', 'UA-300288021-1', {
-                            page_path: window.location.pathname,
-                        });
-                        `
-                    }}
-                />
-            </Head>
             <body className={font.className}>
                 <ModalProvider />
                 <ToastProvider />
@@ -46,6 +29,7 @@ export default function RootLayout({
                 {children}
                 <Footer />
             </body>
+            <GoogleAnalytics gaId="G-62TK09FGMK" />
         </html>
     )
 }
