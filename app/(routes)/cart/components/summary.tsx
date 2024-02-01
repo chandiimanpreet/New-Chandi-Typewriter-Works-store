@@ -31,7 +31,7 @@ const Summary = () => {
     }, 0);
 
     const onCheckout = async () => {
-        const response = await axios.post(`https://e-commerce--admin.vercel.app/api/480a7d7d-f596-483c-99cf-1ef0463d0659/checkout`, {
+        const response = await axios.post(`http://localhost:3000/api/021c64e9-eba0-47f1-b365-aa1588550d1d/checkout`, {
             productIds: items.map((item) => item.id)
         });
 

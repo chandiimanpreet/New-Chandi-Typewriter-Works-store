@@ -42,8 +42,11 @@ const ProductCard: React.FC<ProductCardProps> = ({
         cart.addItem(data);
     };
 
+    // console.log(data)
+    // console.log(typeof parseInt(data?.quantity))
+
     return (
-        <div onClick={handleClick} className="bg-white group cursor-pointer rounded-xl border p-3 space-y-4">
+        <div onClick={handleClick} id={`product-${data.id}`} className="bg-white group cursor-pointer rounded-xl border p-3 space-y-4">
             {/* Images and Actions */}
             <div className="aspect-square rounded-xl bg-gray-100 relative">
                 <Image
@@ -57,9 +60,12 @@ const ProductCard: React.FC<ProductCardProps> = ({
                         <IconButton onClick={onPreview}
                             icon={<Expand size={20} className="text-gray-600" />}
                         />
-                        <IconButton onClick={onAddToCart}
-                            icon={<ShoppingCart size={20} className="text-gray-600" />}
-                        />
+                        {
+                            parseInt(data?.quantity) !== 0 && (
+                                <IconButton onClick={onAddToCart}
+                                    icon={<ShoppingCart size={20} className="text-gray-600" />}
+                                />)
+                        }
                     </div>
                 </div>
             </div>
@@ -75,6 +81,12 @@ const ProductCard: React.FC<ProductCardProps> = ({
             {/* Price */}
             <div className="flex items-center justify-between">
                 <Currency value={data?.price} />
+                {
+                    parseInt(data?.quantity) === 0 && <p className="text-red-600 font-medium">Out of stock</p>
+                }
+                {
+                    parseInt(data?.quantity) !== 0 && <p className="text-green-600 font-medium">{data?.quantity} in stock</p>
+                }
             </div>
         </div>
     )

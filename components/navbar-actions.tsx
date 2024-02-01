@@ -23,13 +23,14 @@ const NavbarActions = () => {
     }
 
     return (
-        <div className="ml-auto flex items-center gap-x-4 cart-btn">
-            <Button onClick={() => router.push('/cart')} className="flex items-center rounded-full bg-black px-4 py-2">
+        <div className="ml-auto flex items-center gap-x-4">
+            <Button onClick={() => router.push('/cart')} className="flex items-center rounded-full bg-black px-4 py-2 cart-btn">
                 <ShoppingBag
                     size={20}
                     color="white"
+                    className='cart-btn'
                 />
-                <span className="ml-2 text-sm font-medium text-white">
+                <span className="ml-2 text-sm font-medium text-white cart-btn">
                     {cart.items.length}
                 </span>
             </Button>

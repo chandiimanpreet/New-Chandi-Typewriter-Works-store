@@ -1,3 +1,7 @@
+// 'use client';
+
+import qs from "query-string";
+
 import getCategory from "@/actions/get-category";
 import getColors from "@/actions/get-colors";
 import getProducts from "@/actions/get-products";
@@ -44,18 +48,22 @@ const CategoryPage: React.FC<CategoryPageProps> = async ({
                     <div className="lg:grid lg:grid-cols-5 lg:gap-x-8">
                         {/* Add Mobile filters */}
                         <MobileFilters sizes={sizes} colors={colors} />
-                        <div className=" lg:block">
+                        <div className="hidden lg:block">
+
                             <Filter
                                 valueKey="sizeId"
                                 name="Sizes"
                                 data={sizes}
+                                clear={true}
                             />
                             <Filter
                                 valueKey="colorId"
                                 name="Colors"
                                 data={colors}
+                                clear={false}
                             />
-                            </div>
+                           
+                        </div>
                         <div className="mt-6 lg:col-span-4 lg:mt-0">
                             {
                                 products.length === 0 && <NoResults />

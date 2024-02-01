@@ -6,23 +6,39 @@ import { useRouter, useSearchParams } from "next/navigation";
 import { Color, Size } from "@/types";
 import Button from "@/components/ui/button";
 import { cn } from "@/lib/utils";
+import { X } from "lucide-react";
 
 interface FilterProps {
     valueKey: string;
     name: string;
     data: (Size | Color)[];
+    clear: boolean;
 }
 
 const Filter: React.FC<FilterProps> = ({
     valueKey,
     name,
-    data
+    data,
+    clear
 }) => {
 
     const searchParams = useSearchParams();
     const router = useRouter();
 
     const selectedValue = searchParams.get(valueKey);
+
+    const clearAll = () => {
+        const query = {
+            ['colorId']: null,
+            ['sizeId']: null,
+        };
+        const url = qs.stringifyUrl({
+            url: window.location.href,
+            query
+        }, { skipNull: true });
+
+        router.push(url);
+    }
 
     const onClick = (id: string) => {
         const current = qs.parse(searchParams.toString());
@@ -46,9 +62,18 @@ const Filter: React.FC<FilterProps> = ({
 
     return (
         <div className="mb-8">
-            <h3 className="text-lg font-semibold">
-                {name}
-            </h3>
+            <div className="flex justify-between items-center">
+                <h3 className="text-lg font-semibold">{name}</h3>
+                {
+                    clear && (
+                        <span className="flex justify-end cursor-pointer" onClick={clearAll} >
+                            <p className="font-semibold">Clear</p>
+                            <X />
+                        </span>
+
+                    )
+                }
+            </div>
             <hr className="my-4" />
             <div className="flex flex-wrap gap-2">
                 {data.map((filter) => (
@@ -65,6 +90,7 @@ const Filter: React.FC<FilterProps> = ({
                     </div>
                 ))}
             </div>
+
         </div>
     )
 

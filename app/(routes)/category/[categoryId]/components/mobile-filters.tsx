@@ -48,11 +48,13 @@ const MobileFilters: React.FC<MobileFilterProps> = ({
                                 valueKey="sizeId"
                                 name="Sizes"
                                 data={sizes}
+                                clear={true}
                             />
                             <Filter
                                 valueKey="colorId"
                                 name="Colors"
                                 data={colors}
+                                clear={false}
                             />
 
                         </div>
