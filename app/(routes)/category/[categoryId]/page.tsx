@@ -13,6 +13,7 @@ import Filter from "./components/filter";
 import NoResults from "@/components/ui/no-results";
 import ProductCard from "@/components/ui/product-card";
 import MobileFilters from "./components/mobile-filters";
+// import getGenders from "@/actions/get-genders";
 
 export const revalidate = 0;
 
@@ -38,6 +39,7 @@ const CategoryPage: React.FC<CategoryPageProps> = async ({
     });
     const sizes = await getSizes();
     const colors = await getColors();
+    // const genders = await getGenders();
     const category = await getCategory(params.categoryId);
 
     return (
@@ -47,7 +49,7 @@ const CategoryPage: React.FC<CategoryPageProps> = async ({
                 <div className="px-4 sm:px-6 lg:px-8 pb-24">
                     <div className="lg:grid lg:grid-cols-5 lg:gap-x-8">
                         {/* Add Mobile filters */}
-                        <MobileFilters sizes={sizes} colors={colors} />
+                        <MobileFilters sizes={sizes} colors={colors}  />
                         <div className="hidden lg:block">
 
                             <Filter
@@ -62,7 +64,12 @@ const CategoryPage: React.FC<CategoryPageProps> = async ({
                                 data={colors}
                                 clear={false}
                             />
-                           
+                            {/* <Filter
+                                valueKey="genderId"
+                                name="Gender"
+                                data={genders}
+                                clear={false}
+                            /> */}
                         </div>
                         <div className="mt-6 lg:col-span-4 lg:mt-0">
                             {

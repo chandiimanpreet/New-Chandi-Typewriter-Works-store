@@ -4,7 +4,7 @@ import { useState } from "react";
 import { Plus, X } from "lucide-react";
 import { Dialog } from "@headlessui/react";
 
-import { Color, Size } from "@/types";
+import { Color, Gender, Size } from "@/types";
 import Button from "@/components/ui/button";
 import IconButton from "@/components/ui/icon-button";
 import Filter from "./filter";
@@ -16,7 +16,7 @@ interface MobileFilterProps {
 
 const MobileFilters: React.FC<MobileFilterProps> = ({
     colors,
-    sizes
+    sizes,
 }) => {
 
     const [open, setOpen] = useState(false);
@@ -56,7 +56,12 @@ const MobileFilters: React.FC<MobileFilterProps> = ({
                                 data={colors}
                                 clear={false}
                             />
-
+                            {/* <Filter
+                                valueKey="genderId"
+                                name="Gender"
+                                data={genders}
+                                clear={false}
+                            /> */}
                         </div>
                     </Dialog.Panel>
                 </div>

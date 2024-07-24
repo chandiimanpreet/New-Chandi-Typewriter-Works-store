@@ -1,5 +1,4 @@
 import { Urbanist } from 'next/font/google';
-import { GoogleAnalytics, GoogleTagManager } from '@next/third-parties/google'
 
 import Footer from '@/components/footer';
 import Navbar from '@/components/navbar';
@@ -29,8 +28,6 @@ export default function RootLayout({
                 {children}
                 <Footer />
             </body>
-            <GoogleAnalytics gaId="G-62TK09FGMK" />
-            <GoogleTagManager gtmId="GTM-M5Q2J93L" />
         </html>
     )
 }
