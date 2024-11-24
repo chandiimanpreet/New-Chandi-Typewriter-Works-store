@@ -32,7 +32,7 @@ const Summary = () => {
     }, 0);
 
     const onCheckout = async () => {
-        const response = await axios.post(`${process.env.NEXT_PUBLIC_API_URL}/checkout` || "https://new-chandi-admin-vercel.vercel.app/api/4452bdaf-6c8d-4c79-b1dd-ccc0d9adf9b7/checkout", {
+        const response = await axios.post("https://new-chandi-admin-vercel.vercel.app/api/4452bdaf-6c8d-4c79-b1dd-ccc0d9adf9b7/checkout", {
             productIds: items.map((item) => item.id)
         });
 
