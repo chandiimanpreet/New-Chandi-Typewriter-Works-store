@@ -22,7 +22,6 @@ export const SearchBar: React.FC<SearchBarProps> = ({ data, title }) => {
     const value = e.target.value;
     setSearchTerm(value);
 
-    // Filter products based on the search term
     const filtered = data.filter((product) =>
       product.name.toLowerCase().includes(value.toLowerCase())
     );
