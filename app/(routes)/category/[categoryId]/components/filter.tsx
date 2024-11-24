@@ -78,7 +78,7 @@ const Filter: React.FC<FilterProps> = ({
             </div>
             <hr className="my-4" />
             <div className="flex flex-wrap gap-2">
-                {data.map((filter) => (
+                {data.map((filter:any) => (
                     <div key={filter.id} className="flex items-center">
                         <Button
                             className={cn(
