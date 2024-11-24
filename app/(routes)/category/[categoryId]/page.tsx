@@ -23,21 +23,11 @@ interface CategoryPageProps {
   params: {
     categoryId: string;
   };
-  searchParams: {
-    search?: string;
-  };
 }
 
-const CategoryPage: React.FC<CategoryPageProps> = async ({
-  params,
-  searchParams,
-}) => {
-  const searchTerm = searchParams.search || "";
-
-  // Fetch products based on category and search term
+const CategoryPage: React.FC<CategoryPageProps> = async ({ params }) => {
   const products = await getProducts({
     categoryId: params.categoryId,
-    // search: searchTerm,
   });
 
   const category = await getCategory(params.categoryId);
