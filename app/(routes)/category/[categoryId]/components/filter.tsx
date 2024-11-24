@@ -3,7 +3,7 @@
 import qs from "query-string";
 import { useRouter, useSearchParams } from "next/navigation";
 
-import { Color, Size, Gender } from "@/types";
+// import { Color, Size, Gender } from "@/types";
 import Button from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 import { X } from "lucide-react";
@@ -11,7 +11,8 @@ import { X } from "lucide-react";
 interface FilterProps {
     valueKey: string;
     name: string;
-    data: (Size | Color | Gender)[];
+    // data: (Size | Color | Gender)[];
+    data: any;
     clear: boolean;
 }
 
@@ -29,9 +30,9 @@ const Filter: React.FC<FilterProps> = ({
 
     const clearAll = () => {
         const query = {
-            ['colorId']: null,
-            ['sizeId']: null,
-            ['genderId']: null,
+            // ['colorId']: null,
+            // ['sizeId']: null,
+            // ['genderId']: null,
         };
         const url = qs.stringifyUrl({
             url: window.location.href,

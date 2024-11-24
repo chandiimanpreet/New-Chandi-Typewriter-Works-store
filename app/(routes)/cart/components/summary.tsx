@@ -8,6 +8,7 @@ import Button from "@/components/ui/button";
 import Currency from "@/components/ui/currency";
 import useCart from "@/hooks/use-cart";
 import { toast } from "react-hot-toast";
+import { Phone } from "lucide-react";
 
 const Summary = () => {
 
@@ -51,9 +52,10 @@ const Summary = () => {
                     <Currency value={totalPrice} />
                 </div>
             </div>
-            <Button onClick={onCheckout} disabled={items.length === 0} className="w-full mt-6">
+            {/* <Button onClick={onCheckout} disabled={true} className="w-full mt-6">
                 Checkout
-            </Button>
+            </Button> */}
+            <p className="flex justify-center mt-7">To buy products call on <Phone className="ml-3 mt-0.5 mr-0.5" /> <strong>88375-00440</strong></p>
         </div>
     );
 }

@@ -1,97 +1,58 @@
 // 'use client';
 
 import qs from "query-string";
+import { redirect } from "next/navigation";
 
 import getCategory from "@/actions/get-category";
-import getColors from "@/actions/get-colors";
+
 import getProducts from "@/actions/get-products";
-import getSizes from "@/actions/get-sizes";
+
 import Billboard from "@/components/billboard";
 import Container from "@/components/ui/container";
 
-import Filter from "./components/filter";
 import NoResults from "@/components/ui/no-results";
 import ProductCard from "@/components/ui/product-card";
-import MobileFilters from "./components/mobile-filters";
-// import getGenders from "@/actions/get-genders";
+import { SearchBar } from "@/components/ui/search";
+
+import { Product } from "@/types";
+import { CloudCog } from "lucide-react";
 
 export const revalidate = 0;
 
 interface CategoryPageProps {
-    params: {
-        categoryId: string;
-    },
-    searchParams: {
-        colorId: string;
-        sizeId: string;
-    },
+  params: {
+    categoryId: string;
+  };
+  searchParams: {
+    search?: string;
+  };
 }
 
 const CategoryPage: React.FC<CategoryPageProps> = async ({
-    params,
-    searchParams
+  params,
+  searchParams,
 }) => {
+  const searchTerm = searchParams.search || "";
 
-    const products = await getProducts({
-        categoryId: params.categoryId,
-        colorId: searchParams.colorId,
-        sizeId: searchParams.sizeId,
-    });
-    const sizes = await getSizes();
-    const colors = await getColors();
-    // const genders = await getGenders();
-    const category = await getCategory(params.categoryId);
+  // Fetch products based on category and search term
+  const products = await getProducts({
+    categoryId: params.categoryId,
+    // search: searchTerm,
+  });
 
-    return (
-        <div className="bg-white">
-            <Container>
-                <Billboard data={category.billboard} />
-                <div className="px-4 sm:px-6 lg:px-8 pb-24">
-                    <div className="lg:grid lg:grid-cols-5 lg:gap-x-8">
-                        {/* Add Mobile filters */}
-                        <MobileFilters sizes={sizes} colors={colors}  />
-                        <div className="hidden lg:block">
+  const category = await getCategory(params.categoryId);
 
-                            <Filter
-                                valueKey="sizeId"
-                                name="Sizes"
-                                data={sizes}
-                                clear={true}
-                            />
-                            <Filter
-                                valueKey="colorId"
-                                name="Colors"
-                                data={colors}
-                                clear={false}
-                            />
-                            {/* <Filter
-                                valueKey="genderId"
-                                name="Gender"
-                                data={genders}
-                                clear={false}
-                            /> */}
-                        </div>
-                        <div className="mt-6 lg:col-span-4 lg:mt-0">
-                            {
-                                products.length === 0 && <NoResults />
-                            }
-                            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
-                                {
-                                    products.map((item) => (
-                                        <ProductCard
-                                            key={item.id}
-                                            data={item}
-                                        />
-                                    ))
-                                }
-                            </div>
+  return (
+    <Container>
+      <div className="bg-white space-y-10 pb-10">
+        <Billboard data={category.billboard} />
 
-                        </div>
-                    </div>
-                </div>
-            </Container>
+        <div className="space-y-4">
+          <SearchBar title={category.name} data={products} />
         </div>
-    )
-}
+      </div>
+    </Container>
+  );
+};
 
-export default CategoryPage
+export default CategoryPage;

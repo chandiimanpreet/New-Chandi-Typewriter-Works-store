@@ -1,6 +1,6 @@
 'use client';
 
-import { ShoppingCart } from "lucide-react";
+import {  Phone } from "lucide-react";
 
 import Currency from "@/components/ui/currency";
 import Button from "@/components/ui/button";
@@ -32,25 +32,15 @@ const Info: React.FC<InfoProps> = ({
             <hr className="my-4" />
             <div className="flex flex-col gap-y-6">
                 <div className="flex items-center gap-x-4">
-                    <h3 className="font-semibold text-black">Size:</h3>
-                    <div>
-                        {data?.size?.name}
-                    </div>
+                    <h3 className="font-semibold text-black">Description:</h3>
                 </div>
-                <div className="flex items-center gap-x-4">
-                    <h3 className="font-semibold text-black">Color:</h3>
-                    <div className="h-6 w-6 rounded-full border border-gray-600"
-                        style={{ backgroundColor: data?.color?.value }}
-                    />
-                </div>
+                    <p>{data?.description}</p>
+                
             </div>
             {
                 parseInt(data?.quantity) !== 0 && (
-                    <div className="mt-10 flex items-center gap-x-3">
-                        <Button onClick={onAddToCart} className="flex items-center gap-x-2" >
-                            Add To Cart
-                            <ShoppingCart />
-                        </Button>
+                    <div className="mt-5 flex items-center gap-x-3">
+                        <p className="flex justify-center mt-3">To buy products call on <Phone className="ml-3 mt-0.5 mr-0.5" /> <strong>88375-00440</strong></p>
                     </div>)
             }
 

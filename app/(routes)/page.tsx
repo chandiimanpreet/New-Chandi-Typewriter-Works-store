@@ -3,26 +3,26 @@ import getProducts from "@/actions/get-products";
 import Billboard from "@/components/billboard";
 import ProductList from "@/components/product-list";
 import Container from "@/components/ui/container";
+import NoResults from "@/components/ui/no-results";
+import { SearchBar } from "@/components/ui/search";
 
 export const revalidate = 0;
 
 const Homepage = async () => {
+  const products = await getProducts({ isFeatured: true });
+  const billboard = await getBillboard("caf26d36-8fe4-413d-82d9-e94484392d8b");
 
-    const products = await getProducts({ isFeatured: true });
-    const billboard = await getBillboard('c36a49b9-cc36-4a9c-8006-bf293c48d2f5');
+  return (
+    <Container>
+      <div className="space-y-10 pb-10">
+        <Billboard data={billboard} />
 
-    return (
-        <Container>            
-            <div className="space-y-10 pb-10">
-                <Billboard data={billboard} />
-
-                <div className="flex flex-col gap-y-8 sm:px-6 lg:px-8">
-                    <ProductList title="Featured Products" items={products} />
-                </div>
-            </div>
-        </Container>
-    )
-}
-
+        <div className="space-y-4">
+          <SearchBar title="Featured Products" data={products} />
+        </div>
+      </div>
+    </Container>
+  );
+};
 
 export default Homepage;
